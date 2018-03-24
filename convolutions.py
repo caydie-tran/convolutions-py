@@ -59,9 +59,8 @@ edge_detection_image = scipy.signal.convolve2d(image_sharpened, edge_kernel, 'va
 # Apply box blur kernel to remove noise.
 box_blur_kernel = np.array([[1,1,1],[1,1,1],[1,1,1]])/9.0
 denoised_image = scipy.signal.convolve2d(edge_detection_image, box_blur_kernel, 'valid')
-# Adjust the contrast of the filtered image by applying Histogram Equalization
 denoised_equalized_image = exposure.equalize_adapthist(denoised_image/np.max(np.abs(denoised_image)), clip_limit=0.01)
-plt.imshow(denoised_equalized_image, cmap=plt.cm.gray)    # plot the denoised_clipped
+plt.imshow(denoised_equalized_image, cmap=plt.cm.gray)
 plt.axis('off')
 plt.show()
 
