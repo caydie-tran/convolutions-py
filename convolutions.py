@@ -39,11 +39,11 @@ plt.imshow(equalized_image, cmap=plt.cm.gray)
 plt.axis('off') # Remove axis from plot.
 plt.show()
 
-# # # Convolve the sharpen kernel and the image
+# Convolve the sharpen kernel and the image
 sharpen_kernel = np.array([[-1, -1, -1],[-1, 8,-1],[-1,-1,-1]])
-# image_sharpened = convolve_2d_kernel(image, sharpen_kernel)
+image_sharpened = convolve_2d_kernel(image, sharpen_kernel)
 
-# # Adjust the contrast of the filtered image by applying Histogram Equalization 
+# Adjust the contrast of the filtered image by applying Histogram Equalization 
 image_sharpened_equalized = exposure.equalize_adapthist(image_sharpened/np.max(np.abs(image_sharpened)), clip_limit=0.01)
 plt.imshow(image_sharpened_equalized, cmap=plt.cm.gray)
 plt.axis('off') # Remove axis from plot.
